@@ -1,0 +1,5 @@
+﻿
+		public #TYPE# #NAME# { get; set; }
+		public string MultiText_#NAME# { get; set; }
+		public #TYPE# Min#NAME# { get; set; }
+		public #TYPE# Max#NAME# { get; set; }

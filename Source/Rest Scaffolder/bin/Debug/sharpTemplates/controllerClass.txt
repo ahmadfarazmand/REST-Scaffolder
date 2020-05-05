@@ -1,0 +1,95 @@
+﻿using #PROJECTNAME#.Models.MetaData;
+using #PROJECTNAME#.SqlData;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Web.Http;
+
+namespace #PROJECTNAME#.Controllers
+{
+    [Route("Api/#NAME#/")]
+    public class #NAME#Controller : BaseApiController
+    {
+        public #NAME#Controller() : base (EntityNames.#NAME#)
+        {
+
+        }
+
+        [HttpGet, Route("Api/#NAME#/ToList")]
+        public async Task<dynamic> ToList([FromUri] #NAME#ListFilter filter)
+        {
+            filter = filter == null ? new #NAME#ListFilter() : filter;
+            var result = await _sqlData.#NAME#.ToList(filter);
+
+            return new { Result = JsonConvert.DeserializeObject(result) };
+        }
+
+        [HttpGet, Route("Api/#NAME#/PagedList")]
+        public async Task<dynamic> PagedList([FromUri] #NAME#PaginationFilter filter)
+        {
+            filter = filter == null ? new #NAME#PaginationFilter() : filter;
+            var result = await _sqlData.#NAME#.PagedList(filter);
+            return new { Result = JsonConvert.DeserializeObject(result) };
+        }
+
+        [HttpGet, Route("Api/#NAME#/FirstOrDefault")]
+        public async Task<dynamic> FirstOrDefault([FromUri] #NAME#Filter filter)
+        {
+            filter = filter == null ? new #NAME#Filter() : filter;
+            var result = await _sqlData.#NAME#.FirstOrDefault(filter);
+            return new { Result = JsonConvert.DeserializeObject(result) };
+        }
+
+        [HttpGet, Route("Api/#NAME#/FirstOrDefaultById/{id}")]
+        public async Task<dynamic> FirstOrDefaultById(#PKSYSTYPE# id)
+        {
+            if (id == null)
+                return new { JsonString = "Error" };
+            var result = await _sqlData.#NAME#.FirstOrDefaultById(id);
+            return new { Result = JsonConvert.DeserializeObject(result) };
+        }
+
+        [HttpGet, Route("Api/#NAME#/AutoComplete")]
+        public async Task<dynamic> AutoComplete([FromUri] #NAME#ListFilter filter)
+        {
+            filter = filter == null ? new #NAME#ListFilter() : filter;
+            var result = await _sqlData.#NAME#.AutoComplete(filter);
+            return new { Result = JsonConvert.DeserializeObject(result) };
+        }
+
+        [HttpPost, Route("Api/#NAME#/Add")]
+        public async Task<dynamic> Add([FromBody]#NAME#Add item)
+        {
+            if(item == null)
+                return new { JsonString = "Error" };
+
+            var currentUser = JwtIdentity.UserInfo(Thread.CurrentPrincipal.Identity);
+            //item.SubmiterUserId = currentUser.Id;
+            var result = await _sqlData.#NAME#.Add(item);
+            return new { Result = JsonConvert.DeserializeObject(result) };
+        }
+
+        [HttpPut, Route("Api/#NAME#/Update")]
+        public async Task<dynamic> Update([FromBody]#NAME#Update item)
+        {
+            if (item == null)
+                return new { JsonString = "Error" };
+            var currentUser = JwtIdentity.UserInfo(Thread.CurrentPrincipal.Identity);
+            //item.SubmiterUserId = currentUser.Id;
+            var result = await _sqlData.#NAME#.Update(item);
+            return new { Result = JsonConvert.DeserializeObject(result) };
+        }
+
+        [HttpDelete, Route("Api/#NAME#/Delete/{id}")]
+        public async Task<dynamic> Delete([FromUri] #PKSYSTYPE# id)
+        {
+            var result = await _sqlData.#NAME#.Delete(id);
+            return new { Result = JsonConvert.DeserializeObject(result) };
+        }
+    }
+}

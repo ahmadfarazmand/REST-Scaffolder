@@ -1,0 +1,8 @@
+﻿		1 = (case when @#COLNAME# Is Not NULL then case when @#COLNAME# = [#CONST#].[#COLNAME#] then 1 else 0 end  else 1 end) And
+		1 = 
+		  (
+			case when 
+			@CheckMultiTable_#COLNAME# = 1
+			Then case when (Select Count (*) from @MultiTable_#COLNAME# Where Item = [#CONST#].[#COLNAME#]) > 0 then 1 Else 0 End
+			Else 1 End
+		  ) #AND#

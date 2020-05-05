@@ -1,0 +1,7 @@
+﻿		
+		private BaseSqlData<#NAME#Filter, #NAME#ListFilter, #NAME#PaginationFilter, #NAME#Add, #NAME#Update, BaseSpName> _#NAME#;
+
+        public BaseSqlData<#NAME#Filter, #NAME#ListFilter, #NAME#PaginationFilter, #NAME#Add, #NAME#Update, BaseSpName> #NAME#
+        {
+            get { if (_#NAME# == null)  _#NAME# =  new #NAME#SqlData(_entityName, _spName); return _#NAME#; }
+        }

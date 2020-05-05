@@ -1,0 +1,7 @@
+﻿
+		//[Column(Order = #ORDER#)]
+		//[Timestamp]
+		//[Required]
+		//[MaxLength(#LENGTH#) , MinLength(1)]
+		//[StringLength (#LENGTH#)]
+		public #TYPE# #NAME# { get; set; }

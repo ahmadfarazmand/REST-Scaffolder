@@ -1,0 +1,20 @@
+﻿				
+                result.Add(new RoleControllerModel()
+                {
+                    Name = "#NAME#",
+                    Roles = new string[] { Admin },
+                    Actions = new List<RoleActionModel>()
+                    {
+                        new RoleActionModel() { Name = "DeletedFirstOrDefault", Roles = new string[] { Admin } },
+                        new RoleActionModel() { Name = "FirstOrDefaultById", Roles = new string[] { Admin } },
+                        new RoleActionModel() { Name = "FirstOrDefault", Roles = new string[] { Admin } },
+                        new RoleActionModel() { Name = "GetDeletedList", Roles = new string[] { Admin } },
+                        new RoleActionModel() { Name = "AutoComplete", Roles = new string[] { Admin } },
+                        new RoleActionModel() { Name = "PagedList", Roles = new string[] { Admin } },
+                        new RoleActionModel() { Name = "ToList", Roles = new string[] { Admin } },
+                        new RoleActionModel() { Name = "Update", Roles = new string[] { Admin } },
+                        new RoleActionModel() { Name = "Delete", Roles = new string[] { Admin } },
+                        new RoleActionModel() { Name = "Add", Roles = new string[] { Admin } }
+                    },
+                });
+				

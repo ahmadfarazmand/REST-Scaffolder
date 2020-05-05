@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using #PROJECTNAME#.Bases;
+using #PROJECTNAME#.Models.MetaData;
+using #PROJECTNAME#.SqlData;
+
+namespace #PROJECTNAME#
+{
+    public class SqlDataManager
+    {
+        protected string _entityName = "";
+        protected BaseSpName _spName;
+        public SqlDataManager(string entityName, BaseSpName spName)
+        {
+            _spName = spName;
+            _entityName = entityName;
+        }
+
+        #PROPERTY#
+
+
+    }
+}

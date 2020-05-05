@@ -1,0 +1,8 @@
+﻿
+	<Compile Include="Controllers\#NAME#Controller.cs" />
+	<Compile Include="SqlData\#NAME#Sql\#NAME#SqlData.cs" />
+	<Compile Include="Models\MetaData\#NAME#Models\#NAME#AddModels.cs" />
+    <Compile Include="Models\MetaData\#NAME#Models\#NAME#FilterModels.cs" />
+    <Compile Include="Models\MetaData\#NAME#Models\#NAME#ListFilterModels.cs" />
+    <Compile Include="Models\MetaData\#NAME#Models\#NAME#PaginationFilterModels.cs" />
+    <Compile Include="Models\MetaData\#NAME#Models\#NAME#UpdateModels.cs" />

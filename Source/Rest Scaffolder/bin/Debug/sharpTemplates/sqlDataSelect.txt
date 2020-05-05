@@ -1,0 +1,81 @@
+﻿using #PROJECTNAME#.Models.MetaData;
+using #PROJECTNAME#.Bases;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity.Spatial;
+using System.Data.SqlClient;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace #PROJECTNAME#.SqlData
+{
+    public class #NAME#SqlData : BaseSqlData<#NAME#Filter, #NAME#ListFilter, #NAME#PaginationFilter, #NAME#Add, #NAME#Update, BaseSpName>
+    {
+        public #NAME#SqlData(string entityName, BaseSpName spNames) : base(entityName, spNames)
+        {
+            _spNames.EntityName = entityName;
+        }
+
+        public override async Task<string> Count(#NAME#Filter filter)
+        {
+            var result = await SqlService.GetDataResult(_spNames.Count + " " + filter.GetSpParams());
+            return result;
+        }
+
+        public override async Task<string> ToList(#NAME#ListFilter filter)
+        {
+            var result = await SqlService.GetDataResult(_spNames.ToList + " " + filter.GetSpParams());
+            return result;
+        }
+
+        public override async Task<string> PagedList(#NAME#PaginationFilter filter)
+        {
+            var result = await SqlService.GetDataResult(_spNames.PagedList + " " + filter.GetSpParams());
+            return result;
+        }
+
+        public override async Task<string> FirstOrDefault(#NAME#Filter filter)
+        {
+            var result = await SqlService.GetDataResult(_spNames.FirstOrDefault + " " + filter.GetSpParams());
+            return result;
+        }
+
+        public override async Task<string> FirstOrDefaultById<T>(T id)
+        {
+			var idString = id.ToString();
+            Guid GuidType = Guid.Empty;
+            if (Guid.TryParse(idString, out GuidType))
+                idString = $"'{GuidType.ToString()}'";
+            var result = await SqlService.GetDataResult(_spNames.FirstOrDefaultById + " " + idString);
+            return result;
+        }
+
+        public override async Task<string> AutoComplete(#NAME#ListFilter filter)
+        {
+            var result = await SqlService.GetDataResult(_spNames.AutoComplete + " " + filter.GetSpParams());
+            return result;
+        }
+
+        public override async Task<string> Add(#NAME#Add item)
+        {
+            var result = await SqlService.GetDataResult(_spNames.Add + " " + item.GetSpParams());
+            return result;
+        }
+
+        public override async Task<string> Update(#NAME#Update item)
+        {
+            var result = await SqlService.GetDataResult(_spNames.Update + " " + item.GetSpParams());
+            return result;
+        }
+
+        public override async Task<string> Delete<T>(T id)
+        {
+			var idString = id.ToString();
+            Guid GuidType = Guid.Empty;
+            if (Guid.TryParse(idString, out GuidType))
+                idString = $"'{GuidType.ToString()}'";
+            var result = await SqlService.GetDataResult(_spNames.Delete + " " + idString);
+            return result;
+        }
+    }
+}

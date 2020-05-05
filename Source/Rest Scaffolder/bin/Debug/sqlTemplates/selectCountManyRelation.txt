@@ -1,0 +1,5 @@
+﻿(Select Count(*)
+From 
+[#SCHEMA#].[#TABLE#] as [#MANYCONST#]
+Where [#MANYCONST#].[#FKEYCOLUMN#] = [#SELECTCONST#].[#PKEYCOLUMN#]) 
+as [#NAME#_#PKEYCOLUMN#Count]

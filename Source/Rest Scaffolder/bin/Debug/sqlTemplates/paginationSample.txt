@@ -1,0 +1,30 @@
+﻿
+CREATE PROCEDURE [SpJson].[#PROCNAME#]
+	@OffsetSkip int = 0,
+	@OffsetSize int = 20,
+    #SPPARAMS#
+AS   
+#SELECTMULTIPARAMS#
+;
+With DataForJson
+As
+(
+(
+
+
+Select
+#SELECTNAMES#
+#RELATIONSJSON#
+#MANYRELATIONSJSON#
+From [#SCHEMA#].[#TABLE#] #CONST#
+Where 
+#SELECTCONDITIONS#
+Order By #CONST#.[#PKNAME#] Desc
+OFFSET  @OffsetSkip ROWS 
+FETCH NEXT @OffsetSize ROWS ONLY
+)
+)
+
+Select * From DataForJson FOR JSON AUTO,INCLUDE_NULL_VALUES
+    
+GO 

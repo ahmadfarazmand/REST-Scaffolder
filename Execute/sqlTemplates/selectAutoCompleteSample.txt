@@ -1,0 +1,26 @@
+﻿
+CREATE PROCEDURE [SpJson].[#PROCNAME#]
+	@TopCount int = 20,
+    #SPPARAMS#
+AS   
+#SELECTMULTIPARAMS#
+;
+With DataForJson
+As
+(
+(
+
+
+Select Top(@TopCount)
+#SELECTNAMES#
+
+From [#SCHEMA#].[#TABLE#] #CONST#
+Where
+#SELECTCONDITIONS#
+Order By #CONST#.[#PKNAME#] Desc
+)
+)
+
+Select * From DataForJson FOR JSON AUTO,INCLUDE_NULL_VALUES
+    
+GO 

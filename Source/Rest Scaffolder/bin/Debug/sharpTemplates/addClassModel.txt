@@ -1,0 +1,23 @@
+﻿namespace #PROJECTNAME#.Models.MetaData
+{
+	using Bases;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    public class #NAME# : BaseSqlAddParam
+    {
+		#PROPERTY#
+
+        public override string GetSpParams()
+        {
+            var result = "";
+
+            #PROPERTYCONVERT#
+
+            return result;
+        }
+    }
+}

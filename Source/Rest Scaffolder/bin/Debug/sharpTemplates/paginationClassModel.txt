@@ -1,0 +1,29 @@
+﻿namespace #PROJECTNAME#.Models.MetaData
+{
+	using Bases;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    public class #NAME# : BaseSqlPaginationFilterParam
+    {
+		public override int? OffsetSkip { get; set; } = 0;
+		public override int? OffsetSize { get; set; } = 10;
+
+		#PROPERTY#
+
+        public override string GetSpParams()
+        {
+            var result = "";
+
+			result += SqlService.Convert(OffsetSkip) + ", ";
+			result += SqlService.Convert(OffsetSize) + ", ";
+
+            #PROPERTYCONVERT#
+
+            return result;
+        }
+    }
+}

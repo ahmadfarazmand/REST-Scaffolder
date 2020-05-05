@@ -1,0 +1,5 @@
+﻿
+			result += SqlService.Convert(#NAME#) + ", ";
+			result += SqlService.Convert(MultiText_#NAME#) + ", ";
+			result += SqlService.Convert(Min#NAME#) + ", ";
+			result += SqlService.Convert(Max#NAME#) + "#COMA# ";

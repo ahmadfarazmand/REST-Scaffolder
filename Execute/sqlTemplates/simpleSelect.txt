@@ -1,0 +1,3 @@
+﻿Select
+#SELECTNAMES#
+From [#SCHEMA#].[#TABLE#] #CONSTNAME#

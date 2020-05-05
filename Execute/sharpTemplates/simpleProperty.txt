@@ -1,0 +1,3 @@
+﻿
+		public #TYPE# #NAME# { get; set; }
+		public string MultiText_#NAME# { get; set; }

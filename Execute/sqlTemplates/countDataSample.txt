@@ -1,0 +1,12 @@
+﻿
+CREATE PROCEDURE [SpJson].[#PROCNAME#]
+    #SPPARAMS#
+AS   
+#SELECTMULTIPARAMS#
+
+Select Count(*)
+From [#SCHEMA#].[#TABLE#] #CONST#
+Where
+#SELECTCONDITIONS#
+    
+GO 

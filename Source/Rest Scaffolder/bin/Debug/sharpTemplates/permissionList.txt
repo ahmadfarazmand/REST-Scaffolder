@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace #PROJECTNAME#
+{
+    public static class RolePermission
+    {
+        public const string Admin = "admin";
+        public static IEnumerable<RoleControllerModel> RoleList
+        {
+            get
+            {
+                var result = new List<RoleControllerModel>();
+
+                result.Add(new RoleControllerModel()
+                {
+                    Name = "Values",
+                    Roles = new string[] { Admin },
+                    Actions = new List<RoleActionModel>()
+                    {
+                        new RoleActionModel() { Name = "Token", Roles = new string[] { Admin } },
+                        
+                    },
+                });
+
+                #LIST#
+
+                return result;
+            }
+        }
+    }
+
+    
+}

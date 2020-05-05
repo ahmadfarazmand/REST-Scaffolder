@@ -1,0 +1,10 @@
+﻿	
+	<Content Include="App_Data\#NAME#\AutoCompleteJson.sql" />
+    <Content Include="App_Data\#NAME#\ByIdJson.sql" />
+    <Content Include="App_Data\#NAME#\CountJson.sql" />
+    <Content Include="App_Data\#NAME#\Delete.sql" />
+    <Content Include="App_Data\#NAME#\FirstOrDefaultJson.sql" />
+    <Content Include="App_Data\#NAME#\InsertReturnJson.sql" />
+    <Content Include="App_Data\#NAME#\ListJson.sql" />
+    <Content Include="App_Data\#NAME#\PaginationListJson.sql" />
+    <Content Include="App_Data\#NAME#\UpdateReturnJson.sql" />

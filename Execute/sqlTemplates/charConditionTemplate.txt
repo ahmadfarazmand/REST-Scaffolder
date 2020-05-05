@@ -1,0 +1,8 @@
+﻿		1 = (case when @#COLNAME# Is Not NULL then case when rtrim([#CONST#].[#COLNAME#]) Like (N'%' + @#COLNAME# + '%') then 1 else 0 end  else 1 end) AND
+		1 = 
+		  (
+			case when 
+			@CheckMultiTable_#COLNAME# = 1
+			Then case when (Select Count (*) from @MultiTable_#COLNAME# Where rtrim([#CONST#].[#COLNAME#]) Like (N'%' + Item + '%')) > 0 then 1 Else 0 End
+			Else 1 End
+		  ) #AND#

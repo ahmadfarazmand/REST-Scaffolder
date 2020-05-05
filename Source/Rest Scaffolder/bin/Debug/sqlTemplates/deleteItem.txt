@@ -1,0 +1,20 @@
+﻿
+Go
+CREATE PROCEDURE [SpJson].[#PROCNAME#]
+    @#PKNAME# #PKTYPE#
+AS
+BEGIN TRY  
+Delete From [#SCHEMA#].[#TABLE#] 
+Where [#PKNAME#] = @#PKNAME#
+
+Declare @SuccessJson nvarchar(MAX) = '{"Message":"Done","Status":true}'
+Select @SuccessJson
+
+END TRY  
+BEGIN CATCH
+
+Declare @ErrorJson nvarchar(MAX) = '{"Message":"' + ERROR_MESSAGE() + '","Status":false}'
+Select @ErrorJson
+
+END CATCH  
+GO 
